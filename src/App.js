@@ -1,50 +1,38 @@
-import React, { Component } from "react"
-import logo from "./logo.svg"
-import "./App.css"
+import "./sass/style.scss";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Home from "./components/home/Home";
+import Admin from "./components/admin/Admin";
+import Accommodations2 from "./components/accommodations/Accommodations2";
+import Accommodation from "./components/accommodation/Accommodation";
+import Contact from "./components/contact/Contact";
+import Login from "./components/login/Login";
+import AuthProvider from "./context/AuthContext";
+import NavMenu from "./components/layout/NavMenu";
+import Footer from "./components/layout/Footer";
 
-class LambdaDemo extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { loading: false, msg: null }
-  }
-
-  handleClick = api => e => {
-    e.preventDefault()
-
-    this.setState({ loading: true })
-    fetch("/.netlify/functions/" + api)
-      .then(response => response.json())
-      .then(json => this.setState({ loading: false, msg: json.msg }))
-  }
-
-  render() {
-    const { loading, msg } = this.state
-
-    return (
-      <p>
-        <button onClick={this.handleClick("hello")}>{loading ? "Loading..." : "Call Lambda"}</button>
-        <button onClick={this.handleClick("async-dadjoke")}>{loading ? "Loading..." : "Call Async Lambda"}</button>
-        <br />
-        <span>{msg}</span>
-      </p>
-    )
-  }
+function App() {
+  return (
+    <AuthProvider>
+      <Router>
+        <div className="wrapper">
+          <NavMenu />
+          <Container className="container">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/accommodations" element={<Accommodations2 />} />
+              <Route path="/accommodation/:id" element={<Accommodation />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/admin" element={<Admin />} />
+            </Routes>
+          </Container>
+        </div>
+        <Footer />
+      </Router>
+    </AuthProvider>
+  );
 }
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <LambdaDemo />
-        </header>
-      </div>
-    )
-  }
-}
-
-export default App
+export default App;

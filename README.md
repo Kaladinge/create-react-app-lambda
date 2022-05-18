@@ -1,108 +1,123 @@
-## Create-React-App-Lambda
+# Project Exam 2
 
-This project is a reference demo showing you how to use [Create React App v3](https://github.com/facebookincubator/create-react-app) and [netlify-lambda v1](https://github.com/netlify/netlify-lambda) together in a [Netlify Dev](https://www.netlify.com/docs/cli/?utm_source=github&utm_medium=swyx-CRAL&utm_campaign=devex#netlify-dev-beta) workflow. You can clone this and immediately be productive with a React app with serverless Netlify Functions in the same repo. Alternatively you can deploy straight to Netlify with this one-click Deploy:
+There are two options with this Project Exam.
+You need to only choose one and please follow the deliveries carefully.
 
+## Goal
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg?utm_source=github&utm_medium=swyx-CRAL&utm_campaign=devex)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify/create-react-app-lambda&utm_source=github&utm_medium=swyx-CRAL&utm_campaign=devex)
+To take the skills learned over the last two years and take on an extensive project where the finished product should reflect the candidate's general development capabilities, in addition to visual and technical skills.
 
-> ⚠️NOTE: You may not need this project at all. [Netlify Dev](https://github.com/netlify/netlify-dev-plugin) works with `create-react-app` out of the box! Only use `netlify-lambda` if you need a build step for your functions, eg if you want to use Babel or TypeScript ([see its README for details](https://github.com/netlify/netlify-lambda/blob/master/README.md#netlify-lambda)).
+## Brief
 
-## Project Setup
+For this assignment you have the choice between getting a real world client that you will manage and build a website for, or a case study to make a hotel booking website.
 
-**Source**: The main addition to base Create-React-App is a new folder: `src/lambda`. This folder is specified and can be changed in the `package.json` script: `"build:lambda": "netlify-lambda build src/lambda"`.
+Whatever project you choose, the final submission must have the following:
 
-**Dist**: Each JavaScript file in there will be built for Netlify Function deployment in `/built-lambda`, specified in [`netlify.toml`](https://www.netlify.com/docs/netlify-toml-reference/?utm_source=github&utm_medium=swyx-CRAL&utm_campaign=devex).
+- A Gantt chart planning the project
+- A style guide
+- An Adobe XD prototype
+- Use a CSS Pre-processor and BEM if not using CSS Modules, Styled Components, etc
+- Use a React.js or Next.js
+- You can use regular JS or TypeScript
+- Please use create-react-app or create-next-app to generate a skeleton project for yourself
+- A fully working website that fulfils the brief
 
-As an example, we've included a small `src/lambda/hello.js` function, which will be deployed to `/.netlify/functions/hello`. We've also included an async lambda example using async/await syntax in `async-dadjoke.js`.
+## Option 1: Real World Client
 
-## Video
+Make a website or application for a real world client. The project should offer a significant enough scope to be able to show off your skills as a developer, and hopefully the project can form a central part of your portfolio for when you start applying for jobs.
 
-Learn how to set this up yourself (and why everything is the way it is) from scratch in a video: https://www.youtube.com/watch?v=3ldSM98nCHI
+The process followed for the project will differ depending on the client and the requirements of their project.
 
-## Babel/webpack compilation
+Note: The project has to have a big enough scope to show off the skills learned over your studies. An example of the level we’re expecting would be a website where administrators can add, update, remove products, and users can search, filter, and contact administrators. If you are unsure if your potential client’s brief is strong enough for the Project Exam 2, please message your tutors. Use of a JavaScript Framework is a requirement.
 
-All functions (inside `src/lambda`) are compiled with webpack using Babel, so you can use modern JavaScript, import npm modules, etc., without any extra setup.
+If you do a Real World Client, your project will need to have the following:
 
-## Local Development
+### Visitor side:
 
-```bash
-## prep steps for first time users
-npm i -g netlify-cli # Make sure you have the [Netlify CLI](https://github.com/netlify/cli) installed
-git clone https://github.com/netlify/create-react-app-lambda ## clone this repo
-cd create-react-app-lambda ## change into this repo
-yarn # install all dependencies
+- Home page
+- Search bar typeahead (auto dropdown to match the products or services the real world client has)
+- A list of products or services either on the home page or a dedicated page
+- A specific page for a product or service
+- A contact form that sends a message and which can be viewed on the admin side. This can be a modal or a page.
+- An enquiry page, either as a modal or separate page
 
-## done every time you start up this project
-ntl dev ## nice shortcut for `netlify dev`, starts up create-react-app AND a local Node.js server for your Netlify functions
-```
+### Admin side:
 
-This fires up [Netlify Dev](https://www.netlify.com/docs/cli/?utm_source=github&utm_medium=swyx-CRAL&utm_campaign=devex#netlify-dev-beta), which:
+- Login section that makes use of JWT tokens
+- List of enquiries and new enquiries appear when user submits the form on the enquiry page
+- List of messages from the contact form
+- The admin can create a new product/service
 
-- Detects that you are running a `create-react-app` project and runs the npm script that contains `react-scripts start`, which in this project is the `start` script
-- Detects that you use `netlify-lambda` as a [function builder](https://github.com/netlify/netlify-dev-plugin/#function-builders-function-builder-detection-and-relationship-with-netlify-lambda), and runs the npm script that contains `netlify-lambda build`, which in this project is the `build:lambda` script.
+### Recommended Process
 
-You can view the project locally via Netlify Dev, via `localhost:8888`.
+Week 1 to 3: Finding client, Planning and Design
+Week 4 to 6: Coding
+Week 7: Bug Fixing
 
-Each function will be available at the same port as well:
+### Level 1 Process
 
-- `http://localhost:8888/.netlify/functions/hello` and 
-- `http://localhost:8888/.netlify/functions/async-dadjoke`
+- Use your networks and connections to find a client that needs a website or application built.
+- Understand their requirements and come up with a functional specification for the project. You can write the functional specification using “System shall” statements. For example, “The system shall allow visitors to search for an article”
+- Create a Gantt chart for the project, planning out your deliverables for the client.
+- Make a design style guide and then take this style guide and create an Adobe XD prototype. Present to the client for feedback.
+- Develop the site ensuring you deliver all that is listed in your functional specification.
+- Test the website on various platforms and browsers. Ensure the site is bug-free and working before presenting to the client.
+- Go through a final round of changes before going live with the website.
+- Write a report on your process and decisions for the project. Please use the report template provided.
 
-## Deployment
+### Submission
 
-During deployment, this project is configured, inside `netlify.toml` to run the build `command`: `yarn build`.
+End of week 3: Functional specification, Gantt chart, style guide, and Adobe XD prototype
+End of week 7: Report with link to website, and all files in a compressed ZIP
 
-`yarn build` corresponds to the npm script `build`, which uses `npm-run-all` (aka `run-p`) to concurrently run `"build:app"` (aka `react-scripts build`) and `build:lambda` (aka `netlify-lambda build src/lambda`).
+## Option 2: Hotel Booking Website
 
-## Typescript
+A local tourism agency in Bergen is launching a new website called ‘Holidaze’ for visitors to the area to be able to find hotels, B&Bs and guesthouses, and for the accommodation owners to receive enquiries.
 
-<details>
-  <summary>
-    <b id="typescript">Click for instructions</b>
-  </summary>
+The project requires you to create the visitor side of the website where users can search accommodation and make enquiries, as well as the administration side where properties can be added and enquiries managed.
 
-You can use Typescript in both your frontend React code (with `react-scripts` v2.1+) and your serverless functions (with `netlify-lambda` v1.1+). Follow these instructions:
+You will need to create an API to store the data for the establishments, enquiries and contact submissions. You can choose to use WordPress or Strapi as a Headless CMS, but it is very important that the API is deployed and publicly available. Please do not submit any files for your API. Only submit the website you have created.
 
-1. `yarn add -D typescript @types/node @types/react @types/react-dom @babel/preset-typescript @types/aws-lambda`
-2. convert `src/lambda/hello.js` to `src/lambda/hello.ts`
-3. use types in your event handler:
+## Requirements for the Website
 
-```ts
-import { Handler, Context, Callback, APIGatewayEvent } from 'aws-lambda'
+### Visitor Side
 
-interface HelloResponse {
-  statusCode: number
-  body: string
-}
+- Homepage
+- Search bar typeahead (auto dropdown with hotel names that match what has been typed)
+- A results page with all hotels
+- The hotel specific page which displays all details about the hotel
+- An enquiry page either modal or separate page
+- A contact page (different to enquiry page) which goes to the admin for Holidaze
 
-const handler: Handler = (event: APIGatewayEvent, context: Context, callback: Callback) => {
-  const params = event.queryStringParameters
-  const response: HelloResponse = {
-    statusCode: 200,
-    body: JSON.stringify({
-      msg: `Hello world ${Math.floor(Math.random() * 10)}`,
-      params,
-    }),
-  }
+### Admin side
 
-  callback(undefined, response)
-}
+- Create a login section that makes use of JWT tokens
+- List of enquiries and new enquiries appear when user submits the form on the enquiry page
+- List of messages from contact form
+- The admin can create a new establishment
 
-export { handler }
-```
+### Recommended Process
 
-rerun and see it work!
+Week 1 and 2: Planning and Design
+Week 3 to 6: Coding
+Week 7: Bug Fixing
 
-You are free to set up your `tsconfig.json` and `tslint` as you see fit.
+### Level 1 Process
 
-</details>
+- Start by planning out the project.
+- Next begin your research of likely users and browse competitor websites for ideas.
+- Create a style guide
+- Build an Adobe XD prototype (or you can use Sketch or Figma).
+- Start coding.
+- Once you’ve finished development, start looking for bugs and ensure the site functions well on all viewports. Test the code on different devices. Because your API is public, the code shouldn’t rely on a local API.
+- Refactor your code.
+- Ask another student to look over your code and ask them if they can see how it might be better implemented. This is important to get an outside view on your code. Please attach this feedback to your report.
+- Add the login details for your admin side at the top of this README.md file so that it's easy for the marker to spot.
 
-**If you want to try working in Typescript on the client and lambda side**: There are a bunch of small setup details to get right. Check https://github.com/sw-yx/create-react-app-lambda-typescript for a working starter.
+### Submission
 
-## Routing and authentication with Netlify Identity
+End of week 7: Report with link to website or a Github link and feedback from code review, and all files in a compressed ZIP. Login details added to the README.md.
 
-For a full demo of routing and authentication, check this branch: https://github.com/netlify/create-react-app-lambda/pull/18 This example will not be maintained but may be helpful.
+### Resources
 
-## Service Worker
-
-`create-react-app`'s default service worker (in `src/index.js`) does not work with lambda functions out of the box. It prevents calling the function and returns the app itself instead ([Read more](https://github.com/facebook/create-react-app/issues/2237#issuecomment-302693219)). To solve this you have to eject and enhance the service worker configuration in the webpack config. Whitelist the path of your lambda function and you are good to go.
+Report template included in the repo.
